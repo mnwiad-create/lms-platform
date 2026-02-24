@@ -31,20 +31,25 @@
 - Grading (quiz submissions with filter)
 - Instructor Profile (teaching stats)
 
+### Auditor Portal (2 pages) - `/auditor/*`
+- Teal-950 sidebar (dark teal theme) with read-only badge
+- Auditor Dashboard (compliance metrics, enrollment breakdown, dept performance, course completion table)
+- Audit Reports (2 tabs: Enrollment Records + User Directory with search/filter/export)
+
 ### Shared Infrastructure
 - 18 shadcn/ui components
 - Zustand auth store with login/logout + role persistence
-- Role-based routing: /admin, /student, /instructor
+- Role-based routing: /admin, /student, /instructor, /auditor
 - Mock API layer (15 users, 8 courses, 20 enrollments, 4 quizzes)
 - Responsive design (mobile-first)
 
 ## Key Files
-- `apps/web/src/App.tsx` - 3-portal role-based router
+- `apps/web/src/App.tsx` - 4-portal role-based router
 - `apps/web/src/stores/auth-store.ts` - Auth state
 - `apps/web/src/lib/mock-data.ts` - All mock data + types
 - `apps/web/src/lib/api.ts` - Mock API functions
-- `apps/web/src/components/layout/` - Admin + Student + Instructor layouts
-- `apps/web/src/pages/instructor/` - 5 instructor pages
+- `apps/web/src/components/layout/` - Admin + Student + Instructor + Auditor layouts
+- `apps/web/src/pages/auditor/` - 2 auditor pages
 
 ## Login Credentials
 | Role | Email | Password | Portal |
@@ -54,6 +59,7 @@
 | INSTRUCTOR | michael.brown@acme.com | password123 | /instructor |
 | INSTRUCTOR | emily.davis@acme.com | password123 | /instructor |
 | STUDENT | john.smith@acme.com | password123 | /student |
+| AUDITOR | james.martin@acme.com | password123 | /auditor |
 
 ## Build Status
 - Build passes: `npx vite build` + `npx tsc --noEmit` = zero errors

@@ -29,11 +29,20 @@
 | 2026-02-24 | UI First: build all role UIs before backend | Faster visual progress |
 | 2026-02-24 | Instructor sees own courses only | createdBy === user.id filter |
 
+## Auditor Decisions
+| Date | Decision | Reason |
+|------|----------|--------|
+| 2026-02-24 | Dedicated /auditor portal (not shared with admin) | Auditors need read-only view with different UI emphasis |
+| 2026-02-24 | Teal-950 sidebar for Auditor | Distinct from admin (slate), student (white), instructor (indigo) |
+| 2026-02-24 | Read-only badge in sidebar | Clear visual indicator that auditor cannot modify data |
+| 2026-02-24 | 2 pages: Dashboard + Reports | Compliance overview + detailed drilldown covers audit needs |
+
 ## Rejected Ideas
 | Date | Idea | Why Rejected |
 |------|------|--------------|
 | 2026-02-24 | Import from @lms/shared in web | Vite module resolution issues |
 | 2026-02-24 | Instructor uses admin portal | Better UX with dedicated portal |
+| 2026-02-24 | Auditor uses admin portal | Auditor needs read-only emphasis, separate from admin CRUD |
 
 ---
 *Last updated: 2026-02-24*

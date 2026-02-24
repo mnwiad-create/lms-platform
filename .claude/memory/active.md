@@ -1,7 +1,7 @@
 # Active Task
 
 ## Current Focus
-LMS Platform - Instructor Portal (Phase 3) COMPLETED
+LMS Platform - Auditor View (Phase 4) COMPLETED
 
 ## In Progress
 - (none)
@@ -9,19 +9,18 @@ LMS Platform - Instructor Portal (Phase 3) COMPLETED
 ## Just Completed
 - [x] Phase 1: Admin Portal (6 pages)
 - [x] Phase 2: Student Portal (6 pages)
-- [x] Phase 3: Instructor Portal (5 pages) - fully built with real mock data
-  - [x] Instructor Layout (sidebar indigo-950 + header)
-  - [x] Role-based routing: /instructor/* with InstructorProtectedLayout
-  - [x] Login redirect: INSTRUCTOR -> /instructor
-  - [x] Instructor Dashboard - course performance, recent activity
-  - [x] My Teaching Courses - course cards with stats, filter tabs
-  - [x] Course Management - 3 tabs (Content, Students, Quizzes)
-  - [x] Grading - quiz submissions table with filter
-  - [x] Instructor Profile - teaching stats, account info
+- [x] Phase 3: Instructor Portal (5 pages)
+- [x] Phase 4: Auditor View (2 pages) - dedicated read-only portal
+  - [x] Auditor Layout (sidebar teal-950 + header)
+  - [x] Role-based routing: /auditor/* with AuditorProtectedLayout
+  - [x] Login redirect: AUDITOR -> /auditor
+  - [x] Auditor Dashboard - compliance metrics, department performance, enrollment breakdown
+  - [x] Audit Reports - 2 tabs (Enrollment Records, User Directory) with search/filter
+  - [x] Auditor credentials added: james.martin@acme.com / password123
+  - [x] Read-only badge in sidebar
 - [x] Build verified: TypeScript + Vite build PASS (zero errors)
 
 ## Next Steps
-- Phase 4: Auditor View (2 pages)
 - Phase 5: CRUD Forms with React Hook Form + Zod
 - Phase 6: Backend API (Hono routes)
 - Phase 7: Database connection (Prisma + Neon)

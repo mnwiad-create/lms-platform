@@ -1484,4 +1484,5 @@ export const mockCredentials: MockCredential[] = [
   { email: 'michael.brown@acme.com', password: 'password123', userId: 'user-003' },
   { email: 'emily.davis@acme.com', password: 'password123', userId: 'user-004' },
   { email: 'john.smith@acme.com', password: 'password123', userId: 'user-005' },
+  { email: 'james.martin@acme.com', password: 'password123', userId: 'user-015' },
 ];

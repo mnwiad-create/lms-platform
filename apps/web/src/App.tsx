@@ -2,6 +2,7 @@ import { Routes, Route, Navigate, Outlet } from 'react-router';
 import { DashboardLayout } from '@/components/layout/dashboard-layout';
 import { StudentLayout } from '@/components/layout/student-layout';
 import { InstructorLayout } from '@/components/layout/instructor-layout';
+import { AuditorLayout } from '@/components/layout/auditor-layout';
 import { useAuthStore } from '@/stores/auth-store';
 import { Role } from '@/lib/mock-data';
 
@@ -29,6 +30,10 @@ import { CourseManagement } from '@/pages/instructor/course-management';
 import { InstructorGrading } from '@/pages/instructor/instructor-grading';
 import { InstructorProfile } from '@/pages/instructor/instructor-profile';
 
+// Auditor pages
+import { AuditorDashboard } from '@/pages/auditor/auditor-dashboard';
+import { AuditReports } from '@/pages/auditor/audit-reports';
+
 // Role-based redirect after login
 function RoleRedirect() {
   const { user, isAuthenticated } = useAuthStore();
@@ -36,16 +41,18 @@ function RoleRedirect() {
 
   if (user?.role === Role.STUDENT) return <Navigate to="/student" replace />;
   if (user?.role === Role.INSTRUCTOR) return <Navigate to="/instructor" replace />;
-  // SYSTEM_ADMIN, COURSE_ADMIN, AUDITOR all go to admin dashboard
+  if (user?.role === Role.AUDITOR) return <Navigate to="/auditor" replace />;
+  // SYSTEM_ADMIN, COURSE_ADMIN go to admin dashboard
   return <Navigate to="/admin" replace />;
 }
 
-// Admin protected layout: SYSTEM_ADMIN, COURSE_ADMIN, AUDITOR only
+// Admin protected layout: SYSTEM_ADMIN, COURSE_ADMIN only
 function AdminProtectedLayout() {
   const { isAuthenticated, user } = useAuthStore();
   if (!isAuthenticated) return <Navigate to="/login" replace />;
   if (user?.role === Role.STUDENT) return <Navigate to="/student" replace />;
   if (user?.role === Role.INSTRUCTOR) return <Navigate to="/instructor" replace />;
+  if (user?.role === Role.AUDITOR) return <Navigate to="/auditor" replace />;
 
   return (
     <DashboardLayout>
@@ -80,6 +87,19 @@ function InstructorProtectedLayout() {
   );
 }
 
+// Auditor protected layout: authenticated auditors only
+function AuditorProtectedLayout() {
+  const { isAuthenticated, user } = useAuthStore();
+  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  if (user?.role !== Role.AUDITOR) return <Navigate to="/" replace />;
+
+  return (
+    <AuditorLayout>
+      <Outlet />
+    </AuditorLayout>
+  );
+}
+
 export default function App() {
   return (
     <Routes>
@@ -89,7 +109,7 @@ export default function App() {
       {/* Root: redirect based on role */}
       <Route path="/" element={<RoleRedirect />} />
 
-      {/* Admin routes - SYSTEM_ADMIN, COURSE_ADMIN, AUDITOR */}
+      {/* Admin routes - SYSTEM_ADMIN, COURSE_ADMIN */}
       <Route path="/admin" element={<AdminProtectedLayout />}>
         <Route index element={<DashboardPage />} />
         <Route path="courses" element={<CoursesPage />} />
@@ -116,6 +136,12 @@ export default function App() {
         <Route path="courses/:courseId" element={<CourseManagement />} />
         <Route path="grading" element={<InstructorGrading />} />
         <Route path="profile" element={<InstructorProfile />} />
+      </Route>
+
+      {/* Auditor routes - auditors only (read-only) */}
+      <Route path="/auditor" element={<AuditorProtectedLayout />}>
+        <Route index element={<AuditorDashboard />} />
+        <Route path="reports" element={<AuditReports />} />
       </Route>
 
       {/* Catch-all: redirect to role-based home */}
