@@ -8,7 +8,18 @@
       "Bash(node --version:*)",
       "Bash(npm install:*)",
       "Bash(npx tsc:*)",
-      "Bash(npx vite build)"
+      "Bash(npx vite build)",
+      "Bash(git init:*)",
+      "Bash(git status:*)",
+      "Bash(GIT_PAGER=cat git log:*)",
+      "Bash(git --no-pager log:*)",
+      "Bash(git --no-pager diff --stat)",
+      "Bash(git --no-pager ls-files:*)",
+      "Bash(git --no-pager ls-tree:*)",
+      "Bash(git --no-pager show:*)",
+      "Bash(git --no-pager diff:*)",
+      "Bash(gh auth:*)",
+      "Bash(gh repo create:*)"
     ]
   }
 }
