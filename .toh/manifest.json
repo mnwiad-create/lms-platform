@@ -1,0 +1,17 @@
+{
+  "version": "1.8.1",
+  "installedAt": "2026-02-23T00:52:33.001Z",
+  "targetDir": "C:\\Users\\marut.kra\\Documents\\apps\\lms-platform",
+  "ides": [
+    "claude",
+    "gemini",
+    "codex"
+  ],
+  "components": {
+    "skills": true,
+    "agents": true,
+    "commands": true,
+    "templates": true,
+    "memory": true
+  }
+}
